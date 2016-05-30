@@ -6,15 +6,15 @@ However the =clojure.test= API hasn't been developed with this style of software
 
 This is why I am introducing unit testing utilities for Clojure unit testing within Org-mode documents. They should make the development more natural and intuitive.
 
-## Installation
+** Installation
 
-### Using Leiningen
+*** Using Leiningen
 
 You can easily install =org-mode-clj-tests-utils= using Leiningen. The only thing you have to do is to add Add =[org-mode-clj-tests-utils "0.1.0"]= as a dependency to your =project.clj=.
 
 Then make sure that you downloaded this dependency by running the =lein deps= command.
 
-## Documentation
+** Documentation
 
 The complete =org-mode-clj-tests-utils= documentation is available in the =org= folder.
 
