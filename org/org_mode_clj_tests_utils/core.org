@@ -103,7 +103,7 @@ The first thing we have to do is to create the tests that succeed and fails in a
 
 There is one thing to keep in mind here, is that we actually can't test the tests that fails since these tests will be evaluated by different softwares like Cider or Leiningen, which means that the tests suites will actually fails. However the code for these failing functions will remain. If ran using =clojure.test= then everything will be working as expected.
 
-#+BEGIN_SRC clojure :tangle ../test/org_mode_clj_tests_utils/core_test.clj :mkdirp yes :noweb yes :padline no :results silent
+#+BEGIN_SRC clojure :tangle ../../test/org_mode_clj_tests_utils/core_test.clj :mkdirp yes :noweb yes :padline no :results silent
 (ns org-mode-clj-tests-utils.core-test
   (:require [clojure.test :refer :all]
             [org-mode-clj-tests-utils.core :refer :all]))
@@ -182,7 +182,7 @@ There is one thing to keep in mind here, is that we actually can't test the test
 
 * Complete Namespace Definition
 
-#+BEGIN_SRC clojure :tangle ../src/org_mode_clj_tests_utils/core.clj :mkdirp yes :noweb yes :padline no
+#+BEGIN_SRC clojure :tangle ../../src/org_mode_clj_tests_utils/core.clj :mkdirp yes :noweb yes :padline no
 (ns org-mode-clj-tests-utils.core)
 
 <<tests-macro>>
