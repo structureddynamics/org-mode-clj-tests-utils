@@ -24,7 +24,7 @@ Its usage looks like this:
 
 To make the usage of the =test-vars= function, we created a new =tests= macro to simplify its usage and to make it more intuitive. Also, it should report failures and successes.
 
-#+NAME: tests-macro
+#+NAME: definition of the test macro
 #+BEGIN_SRC clojure :results silent
 (defmacro tests
   "Run one or multiple tests with fixtures. Returns successes or failures. Tests should be in the same namespace."
@@ -36,7 +36,6 @@ To make the usage of the =test-vars= function, we created a new =tests= macro to
      (if (empty? (str clojure.test/*test-out*))
        (println "All tests succeeded.")
        (println (str clojure.test/*test-out*)))))
-
 #+END_SRC
 
 The usage of this macro is much simpler and intuitive. The only thing you have to do is to write the name of the test functions as arguments of the macro. That way you won't have to use the =#'= /var/ reader macro anymore, you simply list the tests. Let's unit test this macro.
@@ -103,11 +102,8 @@ The first thing we have to do is to create the tests that succeed and fails in a
 
 There is one thing to keep in mind here, is that we actually can't test the tests that fails since these tests will be evaluated by different softwares like Cider or Leiningen, which means that the tests suites will actually fails. However the code for these failing functions will remain. If ran using =clojure.test= then everything will be working as expected.
 
-#+BEGIN_SRC clojure :tangle ../../test/org_mode_clj_tests_utils/core_test.clj :mkdirp yes :noweb yes :padline no :results silent
-(ns org-mode-clj-tests-utils.core-test
-  (:require [clojure.test :refer :all]
-            [org-mode-clj-tests-utils.core :refer :all]))
-
+#+NAME: tests suites for the tests macro
+#+BEGIN_SRC clojure :results silent
 (deftest test--succeed-1
   (testing
       (is (= 2 2))))
@@ -146,10 +142,20 @@ There is one thing to keep in mind here, is that we actually can't test the test
 #+RESULTS:
 : All tests succeeded.
 
-* Complete Namespace Definition
+* Complete Namespace Definition 				   :noexport:
 
 #+BEGIN_SRC clojure :tangle ../../src/org_mode_clj_tests_utils/core.clj :mkdirp yes :noweb yes :padline no
 (ns org-mode-clj-tests-utils.core)
 
-<<tests-macro>>
+<<definition of the test macro>>
+#+END_SRC
+
+** Unit Tests 							   :noexport:
+
+#+BEGIN_SRC clojure :tangle ../../test/org_mode_clj_tests_utils/core_test.clj :mkdirp yes :noweb yes :padline no :results silent
+(ns org-mode-clj-tests-utils.core-test
+  (:require [clojure.test :refer :all]
+            [org-mode-clj-tests-utils.core :refer :all]))
+
+<<tests suites for the tests macro>>
 #+END_SRC
