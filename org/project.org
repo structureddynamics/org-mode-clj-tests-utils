@@ -1,10 +1,30 @@
+#+SETUPFILE: setup.org
+#+TITLE: Org-mode Clojure Tests Utilities
+
+* About the Org-mode Clojure Tests Utilities project
+
+* Leiningen project file
+** Dependencies
+#+NAME: dep-clojure
+#+BEGIN_SRC clojure
+[org.clojure/clojure "1.7.0"]
+#+END_SRC
+
+#+NAME: dep-codox
+#+BEGIN_SRC clojure
+[codox "0.9.4"]
+#+END_SRC               
+
+** Project File
+
+#+BEGIN_SRC clojure :tangle ../project.clj :noweb yes :padline no
 (defproject org-mode-clj-tests-utils "0.1.0"
   :description "Clojure code tests utilities for Org-mode"
   :url "https://github.com/structureddynamics/org-mode-clj-tests-utils"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [codox "0.9.4"]]
+  :dependencies [<<dep-clojure>>
+                 <<dep-codox>>]
   :target-path "target/%s"
   :profiles {:dev {:warn-on-reflection true}
              :uberjar {:aot :all}}
@@ -12,3 +32,8 @@
   :codox {:namespaces [cognonto-owl.core]
           :metadata {:doc/format :markdown}
           :output-path "codox"})
+#+END_SRC
+
+
+
+
